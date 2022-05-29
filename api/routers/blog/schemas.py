@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from api.routers.users.schemas import ShowUserSchema
 
 
 class BlogSchema(BaseModel):
@@ -6,6 +7,10 @@ class BlogSchema(BaseModel):
     content: str
 
 
-class ShowBlogSchema(BlogSchema):
+class ShowBlogSchema(BaseModel):
+    title: str
+    content: str
+    owner: ShowUserSchema
+
     class Config:
         orm_mode = True

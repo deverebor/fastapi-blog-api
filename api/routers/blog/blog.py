@@ -31,7 +31,7 @@ async def get_single_blog(id: int, db: Session = Depends(get_db)):
 
 @router.post("", status_code=status.HTTP_201_CREATED)
 async def create(request: BlogSchema, db: Session = Depends(get_db)):
-    new_blog = BlogModel(**request.dict())
+    new_blog = BlogModel(title=request.title, content=request.content, user_id=1)
     db.add(new_blog)
     db.commit()
     db.refresh(new_blog)

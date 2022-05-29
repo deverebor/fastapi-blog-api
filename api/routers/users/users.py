@@ -6,7 +6,7 @@ from api.utils.authentication.password import EncryptPassword
 from api.database import engine, get_db
 from . import models
 from .models import UserModel
-from .schemas import UserSchema, ShowUserSchema
+from .schemas import UserSchema, ShowUserSchema, ShowUserWithBlogsSchema
 
 router = APIRouter()
 
@@ -28,7 +28,7 @@ async def create(request: UserSchema, db: Session = Depends(get_db)):
     return new_user
 
 
-@router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowUserSchema)
+@router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowUserWithBlogsSchema)
 async def all_users(id: int, db: Session = Depends(get_db)):
     user = db.query(UserModel).filter(UserModel.id == id).first()
     if not user:
