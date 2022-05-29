@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, Response, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from api.database import engine, get_db
@@ -8,7 +8,6 @@ from api.database import engine, get_db
 from api.routers.blog.repository import repository
 
 from . import models
-from .models import BlogModel
 from .schemas import BlogSchema, ShowBlogSchema
 
 router = APIRouter(

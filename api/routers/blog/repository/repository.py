@@ -13,7 +13,7 @@ def get_all(db: Session):
 
 
 def get_by_id(blog_id: int, db: Session):
-    blog = db.query(BlogModel).filter(BlogModel.id == blog_id).first()
+    blog = db.query(BlogModel).filter(BlogModel.blog_id == blog_id).first()
     if not blog:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Blog with id: {blog_id} not found")
     return blog
@@ -29,7 +29,7 @@ def create_blog(request: BlogSchema, db: Session):
 
 
 def update_by_id(blog_id: int, request: BlogSchema, db: Session):
-    blog = db.query(BlogModel).filter(BlogModel.id == blog_id).first()
+    blog = db.query(BlogModel).filter(BlogModel.blog_id == blog_id).first()
     if not blog:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"success: {False}")
     blog.title = request.title
@@ -41,7 +41,7 @@ def update_by_id(blog_id: int, request: BlogSchema, db: Session):
 
 
 def delete_by_id(blog_id: int, db: Session):
-    blog = db.query(BlogModel).filter(BlogModel.id == blog_id).first()
+    blog = db.query(BlogModel).filter(BlogModel.blog_id == blog_id).first()
     if not blog:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"success: {False}")
     db.delete(blog)

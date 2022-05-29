@@ -1,12 +1,11 @@
-from fastapi import APIRouter, Depends, Response, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-
-from api.utils.authentication.password import EncryptPassword
 
 from api.database import engine, get_db
 from . import models
-from .models import UserModel
 from .schemas import UserSchema, ShowUserSchema, ShowUserWithBlogsSchema
+
+from api.routers.users.repository import repository
 
 router = APIRouter(
     prefix="/users",
@@ -17,23 +16,10 @@ models.Base.metadata.create_all(bind=engine)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, response_model=ShowUserSchema)
-async def create(request: UserSchema, db: Session = Depends(get_db)):
-    new_user = UserModel(
-        first_name=request.first_name,
-        last_name=request.last_name,
-        email=request.email,
-        password=EncryptPassword.encrypt(request.password)
-    )
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
-
-    return new_user
+async def create( request: UserSchema, db: Session = Depends(get_db)):
+    return repository.create_user(request, db)
 
 
 @router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowUserWithBlogsSchema)
-async def all_users(id: int, db: Session = Depends(get_db)):
-    user = db.query(UserModel).filter(UserModel.id == id).first()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-    return user
+async def get_user(id: int, db: Session = Depends(get_db)):
+    return repository.get_by_id(id, db)
