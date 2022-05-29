@@ -7,14 +7,19 @@
 ## Blog endpoint
 
 **Get:** all the posts by using the `/blog` endpoint.
+<br />
 **Get:** a specific post by using the `/blog/<int:id>` endpoint.
+<br />
 **Post:** a new blog post by using the `/blog` endpoint.
+<br />
 **Put:** update a specific post by using the `/blog/<int:id>` endpoint.
+<br />
 **Delete:** delete a specific post by using the `/blog/<int:id>` endpoint.
 
 ## User endpoint
 
 **Get:** all the users by using the `/users` endpoint.
+<br />
 **Get:** specific user by using the `/users/<int:id>` endpoint.
 
 ## Api Docs
