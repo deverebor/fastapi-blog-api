@@ -1,0 +1,4 @@
+passlib~=1.7.4
+fastapi~=0.78.0
+SQLAlchemy~=1.4.36
+pydantic~=1.9.1
