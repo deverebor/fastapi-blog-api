@@ -27,4 +27,3 @@ class ShowUserSchema(BaseModel):
 
     class Config:
         orm_mode = True
-

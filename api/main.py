@@ -12,6 +12,6 @@ app = FastAPI(
     contact=ApiInfo.contact
 )
 
-app.include_router(blog.router, prefix="/blog", tags=["blog"])
+app.include_router(blog.router)
 
-app.include_router(users.router, prefix="/users", tags=["users"])
+app.include_router(users.router)

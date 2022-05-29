@@ -8,7 +8,10 @@ from . import models
 from .models import UserModel
 from .schemas import UserSchema, ShowUserSchema, ShowUserWithBlogsSchema
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/users",
+    tags=["Users"]
+)
 
 models.Base.metadata.create_all(bind=engine)
 
