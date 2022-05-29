@@ -31,6 +31,17 @@ async def destroy(id: int, db: Session = Depends(get_db)):
     return Response(status_code=status.HTTP_200_OK)
 
 
+@app.put("/blog/{id}", status_code=status.HTTP_202_ACCEPTED)
+async def update(id: int, request: Blog, db: Session = Depends(get_db)):
+    blog = db.query(models.Blog).filter(models.Blog.id == id).first()
+    if not blog:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Blog with id: {id} not found")
+    blog.title = request.title
+    blog.content = request.content
+    db.commit()
+    return Response(status_code=status.HTTP_200_OK)
+
+
 @app.get("/blog")
 async def all_blogs(db: Session = Depends(get_db)):
     blogs = db.query(models.Blog).all()
