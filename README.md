@@ -1,4 +1,4 @@
-# FastAPI Crash Course
+# FastAPI - Blog Api
 
 > This is a simple API for a blog. It is built with FastAPI and uses SQLAlchemy for the database with SQLite.
 
