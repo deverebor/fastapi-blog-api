@@ -12,6 +12,7 @@ bcrypt = "*"
 python-jose = "*"
 cryptography = "*"
 python-multipart = "*"
+gunicorn = "*"
 
 [dev-packages]
 
