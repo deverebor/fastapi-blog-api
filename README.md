@@ -22,6 +22,13 @@
 <br />
 **Get:** specific user by using the `/users/<int:id>` endpoint.
 
+## Auth endpoint
+
+Genreate a token by using the `/auth` endpoint.
+<br />
+You will need to set the `SECRET_KEY`, `ACCESS_TOKEN_EXPIRATION_TIME` and `ALGORITHM` in .env environment variable to 
+use this endpoint.
+
 ## Api Docs
 
 just fork the project and access the docs with`localhost:8000/docs` or `localhost:8000/redoc`
