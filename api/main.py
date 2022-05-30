@@ -6,24 +6,11 @@ from api.routers.auth import auth
 
 title = "Blog API"
 description = """
-    This is a simple API for a blog. It is built with FastAPI and uses SQLAlchemy for the database with SQLite.
+> This is a simple API for a blog. It is built with FastAPI and uses SQLAlchemy for the database with SQLite.
 
-    # Basic usage
-
-    ## Blog endpoint
-
-    Get: all the posts by using the `/blog` endpoint.
-    Get: a specific post by using the `/blog/<int:id>` endpoint.
-    Post: a new blog post by using the `/blog` endpoint.
-    Put: update a specific post by using the `/blog/<int:id>` endpoint.
-    Delete: delete a specific post by using the `/blog/<int:id>` endpoint.
-
-    ## User endpoint
-
-    Get: all the users by using the `/users` endpoint.
-    Get: specific user by using the `/users/<int:id>` endpoint.
+This API was made as a study project to understand how it work FastAPI and how to use.
     """
-version = "1.0"
+version = "1.5"
 contact = {
     "name": "Lucas Souza (@deverebor)",
     "url": "https://www.oerebor.dev",

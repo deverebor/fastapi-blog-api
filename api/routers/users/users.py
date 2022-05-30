@@ -16,10 +16,10 @@ models.Base.metadata.create_all(bind=engine)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED, response_model=ShowUserSchema)
-async def create( request: UserSchema, db: Session = Depends(get_db)):
+async def create(request: UserSchema, db: Session = Depends(get_db)):
     return repository.create_user(request, db)
 
 
 @router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowUserWithBlogsSchema)
-async def get_user(id: int, db: Session = Depends(get_db)):
-    return repository.get_by_id(id, db)
+async def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
+    return repository.get_by_id(user_id, db)

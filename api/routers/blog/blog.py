@@ -26,8 +26,9 @@ async def get_all_blogs(db: Session = Depends(get_db), current_user: UserSchema 
 
 
 @router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowBlogSchema)
-async def get_single_blog(id: int, db: Session = Depends(get_db), current_user: UserSchema = Depends(get_current_user)):
-    return repository.get_by_id(id, db)
+async def get_blog_by_id(blog_id: int, db: Session = Depends(get_db), current_user: UserSchema = Depends(
+    get_current_user)):
+    return repository.get_by_id(blog_id, db)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED)
@@ -36,10 +37,11 @@ async def create(request: BlogSchema, db: Session = Depends(get_db), current_use
 
 
 @router.put("/{id}", status_code=status.HTTP_202_ACCEPTED)
-async def update(id: int, request: BlogSchema, db: Session = Depends(get_db), current_user: UserSchema = Depends(get_current_user)):
-    return repository.update_by_id(id, request, db)
+async def update(blog_id: int, request: BlogSchema, db: Session = Depends(get_db), current_user: UserSchema = Depends(
+    get_current_user)):
+    return repository.update_by_id(blog_id, request, db)
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
-async def destroy(id: int, db: Session = Depends(get_db), current_user: UserSchema = Depends(get_current_user)):
-    return repository.delete_by_id(id, db)
+async def delete(blog_id: int, db: Session = Depends(get_db), current_user: UserSchema = Depends(get_current_user)):
+    return repository.delete_by_id(blog_id, db)
