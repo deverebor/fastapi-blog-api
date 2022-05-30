@@ -11,6 +11,7 @@ passlib = "*"
 bcrypt = "*"
 python-jose = "*"
 cryptography = "*"
+python-multipart = "*"
 
 [dev-packages]
 
