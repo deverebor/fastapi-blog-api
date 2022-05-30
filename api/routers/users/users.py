@@ -4,8 +4,8 @@ from sqlalchemy.orm import Session
 from api.database import engine, get_db
 from . import models
 from .schemas import UserSchema, ShowUserSchema, ShowUserWithBlogsSchema
-
 from api.routers.users.repository import repository
+from api.utils.authentication.oauth2 import get_current_user
 
 router = APIRouter(
     prefix="/users",
@@ -21,5 +21,6 @@ async def create(request: UserSchema, db: Session = Depends(get_db)):
 
 
 @router.get("/{id}", status_code=status.HTTP_200_OK, response_model=ShowUserWithBlogsSchema)
-async def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
+async def get_user_by_id(user_id: int, db: Session = Depends(get_db), current_user: UserSchema = Depends(
+    get_current_user)):
     return repository.get_by_id(user_id, db)
