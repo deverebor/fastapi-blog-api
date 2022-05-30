@@ -1,1 +1,1 @@
-web: uvicorn api.main:app --reload
+worker: uvicorn api.main:app --reload
