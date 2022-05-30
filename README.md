@@ -31,4 +31,4 @@ use this endpoint.
 
 ## Api Docs
 
-just fork the project and access the docs with`[Swagger](https://api-fastapi-blog.herokuapp.com/docs)` or `[Redoc](https://api-fastapi-blog.herokuapp.com/redoc)` to see all endpoints.
+just fork the project and access the docs with [Swagger](https://api-fastapi-blog.herokuapp.com/docs) or [Redoc](https://api-fastapi-blog.herokuapp.com/redoc) to see all endpoints.
